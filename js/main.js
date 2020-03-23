@@ -5,18 +5,21 @@
   const reset = document.getElementById('reset');
 
   let startTime;
-  let time;
-  let elapsedTime = 0;
+  let timerId;
+  let AddTime = 0;
 
   function countUp() {
-    const d = new Date(Date.now() - startTime + elapsedTime);
-    const m = String(d.getMinutes()).padStart(2,'0');
-    const s = String(d.getSeconds()).padStart(2,'0');
-    const ms = String(d.getMilliseconds()).padStart(3,'0');
+    const d = new Date(Date.now() - startTime + AddTime);
+    let m = Math.floor(d / 60000);
+    m = ('0' + m).slice(-2);
+    let s = Math.floor(d % 60000 / 1000);
+    s = ('0' + s).slice(-2);
+    let ms = d % 1000;
+    ms = ('0' + ms).slice(-3);
 
     timer.textContent = `${m}:${s}.${ms}`;
 
-    time = setTimeout(()=> {
+    timerId = setTimeout(()=> {
       countUp();
     }, 10);
   }
@@ -55,8 +58,8 @@
       return;
     }
     stopWatch();
-    clearTimeout(time);
-    elapsedTime += Date.now() - startTime;
+    clearTimeout(timerId);
+    AddTime += Date.now() - startTime;
   });
 
   reset.addEventListener('click', ()=> {
@@ -65,6 +68,6 @@
     }
     readySetStopWatch();
     timer.textContent = '00:00.000';
-    elapsedTime = 0;
+    AddTime = 0;
   });
 }
