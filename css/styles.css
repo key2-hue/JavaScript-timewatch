@@ -1,0 +1,37 @@
+.container {
+  width: 250px;
+  height: 200px;
+  background-color: limegreen;
+  margin: 30px auto 0;
+}
+
+#timer {
+  text-align: center;
+  /* padding-top: 20px; */
+  background-color: #fff;
+  width: 150px;
+  margin: 0 auto;
+  position: relative;
+  top: 20px;
+}
+
+.stopwatch {
+  position: relative;
+  top: 80px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.btn {
+  background-color: skyblue;
+  width: 50px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.inactive {
+  opacity: 0.5;
+}
+
+
+
